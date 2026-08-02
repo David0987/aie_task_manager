@@ -1,0 +1,297 @@
+/* =====================================================================
+   Task Manager styles
+   Colours come from the CSS variables in index.css (--text, --bg,
+   --border, --accent...), which already adapt to light and dark mode.
+   ===================================================================== */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 20px 60px;
+  text-align: left;
+}
+
+/* ---------- Header ---------- */
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.header-title {
+  font-family: var(--heading);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-h);
+  text-decoration: none;
+}
+
+/* ---------- Page wrapper ---------- */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Filter bar ---------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  font: inherit;
+  font-size: 15px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-border);
+}
+
+/* The currently selected filter */
+.filter-btn.active {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ---------- Task list ---------- */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.task-row:last-child {
+  border-bottom: none;
+}
+
+.task-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.task-title {
+  color: var(--text-h);
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.task-title:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---------- Status / priority badges ---------- */
+.badge {
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.status-todo {
+  background: rgba(148, 163, 184, 0.18);
+  color: #64748b;
+}
+.status-in-progress {
+  background: rgba(234, 179, 8, 0.18);
+  color: #a16207;
+}
+.status-done {
+  background: rgba(34, 197, 94, 0.18);
+  color: #15803d;
+}
+
+.priority-low {
+  border-color: var(--border);
+  color: var(--text);
+}
+.priority-medium {
+  border-color: rgba(234, 179, 8, 0.5);
+  color: #a16207;
+}
+.priority-high {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .status-todo {
+    color: #cbd5e1;
+  }
+  .status-in-progress {
+    color: #fcd34d;
+  }
+  .status-done {
+    color: #6ee7b7;
+  }
+  .priority-medium {
+    color: #fcd34d;
+  }
+  .priority-high {
+    color: #fca5a5;
+  }
+}
+
+/* ---------- Delete button ---------- */
+.delete-btn {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+}
+
+/* ---------- Add task form ---------- */
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.add-form h2 {
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.field-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.field input,
+.field textarea,
+.field select {
+  font: inherit;
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: 2px solid var(--accent-border);
+  outline-offset: -1px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  font: inherit;
+  font-size: 15px;
+  align-self: flex-start;
+  padding: 9px 18px;
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Detail page ---------- */
+.back-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 15px;
+  align-self: flex-start;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.task-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.task-detail h2 {
+  margin: 0;
+}
+
+.task-description {
+  line-height: 155%;
+}
+
+.task-id {
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  padding: 28px 16px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
